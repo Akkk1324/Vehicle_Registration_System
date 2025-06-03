@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::content})}">
+<head></head>
+<body>
+    <div th:fragment="content">
+        <div class="jumbotron bg-light p-5 rounded">
+            <h1 class="display-4">Welcome to Vehicle Registration</h1>
+            <p class="lead">Manage your vehicle registrations efficiently</p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" th:href="@{/register}" role="button">
+                <i class="bi bi-plus-circle"></i> Register New Vehicle
+            </a>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-car-front"></i> Register Vehicle</h5>
+                        <p class="card-text">Register new vehicles in the system</p>
+                        <a th:href="@{/register}" class="btn btn-outline-primary">Go to Registration</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-search"></i> Search Vehicles</h5>
+                        <p class="card-text">Find existing vehicle registrations</p>
+                        <a th:href="@{/search}" class="btn btn-outline-primary">Search Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-list-ul"></i> View All</h5>
+                        <p class="card-text">Browse all registered vehicles</p>
+                        <a th:href="@{/list}" class="btn btn-outline-primary">View List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

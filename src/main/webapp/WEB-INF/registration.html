@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::content})}">
+<head></head>
+<body>
+    <div th:fragment="content">
+        <div class="form-container">
+            <h2 class="mb-4"><i class="bi bi-car-front"></i> Vehicle Registration</h2>
+            
+            <form th:action="@{/register}" method="post" class="needs-validation" novalidate>
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        Vehicle Details
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="vin" class="form-label">VIN Number</label>
+                                <input type="text" class="form-control" id="vin" name="vin" required>
+                                <div class="invalid-feedback">Please enter VIN number</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="make" class="form-label">Make</label>
+                                <input type="text" class="form-control" id="make" name="make" required>
+                                <div class="invalid-feedback">Please enter vehicle make</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="model" class="form-label">Model</label>
+                                <input type="text" class="form-control" id="model" name="model" required>
+                                <div class="invalid-feedback">Please enter vehicle model</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="year" class="form-label">Year</label>
+                                <input type="number" class="form-control" id="year" name="year" required>
+                                <div class="invalid-feedback">Please enter manufacture year</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="color" class="form-label">Color</label>
+                                <input type="text" class="form-control" id="color" name="color" required>
+                                <div class="invalid-feedback">Please enter vehicle color</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        Owner Information
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                <div class="invalid-feedback">Please enter first name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                <div class="invalid-feedback">Please enter last name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="invalid-feedback">Please enter valid email</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                                <div class="invalid-feedback">Please enter phone number</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="address" class="form-label">Address</label>
+                                <textarea class="form-control" id="address" name="address" rows="2" required></textarea>
+                                <div class="invalid-feedback">Please enter address</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="reset" class="btn btn-secondary me-md-2">
+                        <i class="bi bi-arrow-counterclockwise"></i> Reset
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Register Vehicle
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            // Form validation
+            (() => {
+                'use strict'
+                const forms = document.querySelectorAll('.needs-validation')
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+            })()
+        </script>
+    </div>
+</body>
+</html>

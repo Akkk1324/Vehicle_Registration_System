@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Vehicle</title>
+</head>
+<body>
+    <h1>Search Vehicle</h1>
+    <form th:action="@{/vehicles/details}" method="get">
+        <label for="vin">Enter Vehicle VIN:</label>
+        <input type="text" id="vin" name="vin" required>
+        <button type="submit">Search</button>
+    </form>
+    
+    <h2>Search by Registration Number</h2>
+    <form th:action="@{/vehicles/search-results}" method="get">
+        <label for="searchTerm">Registration Number:</label>
+        <input type="text" id="searchTerm" name="searchTerm" required>
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>

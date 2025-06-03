@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <div th:if="${vehicles != null && !vehicles.empty}">
+        <table border="1">
+            <tr>
+                <th>VIN</th>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Registration Number</th>
+                <th>Actions</th>
+            </tr>
+            <tr th:each="vehicle : ${vehicles}">
+                <td th:text="${vehicle.vin}"></td>
+                <td th:text="${vehicle.make}"></td>
+                <td th:text="${vehicle.model}"></td>
+                <td th:text="${vehicle.year}"></td>
+                <td th:text="${vehicle.registrationNumber}"></td>
+                <td>
+                    <a th:href="@{/vehicles/details(vin=${vehicle.vin})}">View Details</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${vehicles == null || vehicles.empty}">
+        <p>No vehicles found matching your search criteria.</p>
+    </div>
+    <a href="/vehicles/search">Back to Search</a>
+</body>
+</html>
