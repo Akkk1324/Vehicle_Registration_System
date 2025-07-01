@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registration System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Vehicle Registration System</h1>
+            <nav>
+                <button class="nav-btn active" data-section="register">Register Vehicle</button>
+                <button class="nav-btn" data-section="search">Search Registrations</button>
+                <button class="nav-btn" data-section="list">All Registrations</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Registration Form Section -->
+            <section id="register" class="section active">
+                <h2>Register New Vehicle</h2>
+                <form id="registrationForm" class="form-grid" method="POST" action="/api/registrations/">
+                    <div class="form-group">
+                        <h3>Customer Information</h3>
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipCode">Zip Code:</label>
+                        <input type="text" id="zipCode" name="zipCode">
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Vehicle Information</h3>
+                        <label for="vin">VIN:</label>
+                        <input type="text" id="vin" name="vin" maxlength="17" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="make">Make:</label>
+                        <input type="text" id="make" name="make" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model">Model:</label>
+                        <input type="text" id="model" name="model" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year">Year:</label>
+                        <input type="number" id="year" name="year" min="1900" max="2030" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="color">Color:</label>
+                        <input type="text" id="color" name="color">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vehicleType">Vehicle Type:</label>
+                        <select id="vehicleType" name="vehicleType">
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Hatchback">Hatchback</option>
+                            <option value="Coupe">Coupe</option>
+                            <option value="Truck">Truck</option>
+                            <option value="Convertible">Convertible</option>
+                            <option value="Wagon">Wagon</option>
+                            <option value="Motorcycle">Motorcycle</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fuelType">Fuel Type:</label>
+                        <select id="fuelType" name="fuelType">
+                            <option value="Gasoline">Gasoline</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Electric">Electric</option>
+                            <option value="Hybrid">Hybrid</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="engineSize">Engine Size:</label>
+                        <input type="text" id="engineSize" name="engineSize">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="transmission">Transmission:</label>
+                        <select id="transmission" name="transmission">
+                            <option value="Manual">Manual</option>
+                            <option value="Automatic">Automatic</option>
+                            <option value="CVT">CVT</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <h3>Registration Details</h3>
+                        <label for="licensePlate">License Plate:</label>
+                        <input type="text" id="licensePlate" name="licensePlate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registrationFee">Registration Fee ($):</label>
+                        <input type="number" id="registrationFee" name="registrationFee" step="0.01" value="75.00" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Register Vehicle</button>
+                </form>
+            </section>
+
+            <!-- Search Section -->
+            <section id="search" class="section">
+                <h2>Search Registrations</h2>
+                <div class="search-controls">
+                    <select id="searchType">
+                        <option value="registration">Registration Number</option>
+                        <option value="plate">License Plate</option>
+                        <option value="email">Customer Email</option>
+                    </select>
+                    <input type="text" id="searchQuery" placeholder="Enter search term...">
+                    <button id="searchBtn">Search</button>
+                </div>
+                <div id="searchResults" class="results-container"></div>
+            </section>
+
+            <!-- List All Section -->
+            <section id="list" class="section">
+                <h2>All Registrations</h2>
+                <button id="loadAllBtn" class="load-btn">Load All Registrations</button>
+                <div id="allRegistrations" class="results-container"></div>
+            </section>
+        </main>
+
+        <!-- Notification area -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
